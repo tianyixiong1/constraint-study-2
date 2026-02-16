@@ -1014,6 +1014,7 @@ function choiceTrial({ condition, phase, pageLabel }) {
   const agentName = gender === "male" ? s.male_name : s.female_name;
   const scenarioText = gender === "male" ? s.male_agent : s.female_agent;
   const actions = condition.actions;
+  const possessive = gender === "male" ? "his" : "her"; //updated at Feb 16
 
   const likelihoodPhrase = phase.startsWith("most")
   ? "most likely"
@@ -1116,7 +1117,7 @@ function choiceTrial({ condition, phase, pageLabel }) {
         text-align: center;
       ">
         <p style="margin-bottom:16px;">
-          To what extent does ${agentName} exercise their own free will in choosing to perform this action?
+          To what extent does ${agentName} exercise ${possessive} own free will in choosing to perform this action?
         </p>
         ${makeTopScale("autonomy")}
         <input
