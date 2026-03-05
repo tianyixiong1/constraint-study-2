@@ -229,7 +229,7 @@ const instruction = {
       <h2 style="text-align:center; margin-bottom:50px;" class="inst-p active">Welcome to our study!</h2>
       <p class="inst-p hidden">In this survey, you will read 8 short scenarios, each describing a dilemma that someone experienced.</p>
       <p class="inst-p hidden">For each scenario, you will be shown a brief description of the person involved, followed by about 6 possible actions they could take. Your task is to choose the 2 actions you think the person is <strong>MOST likely</strong> to do, and the 2 actions they are <strong>LEAST likely</strong> to do.</p>
-      <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer three questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), and how normal you think the action is.</p>
+      <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer four questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), how normal you think the action is, and how much they are exercising free will to do that.</p>
       <p class="inst-p hidden">The descriptions of the people you will learn about are based on the ratings from a group of prior participants.</p>
       <p class="inst-p hidden">
         We selected people and their dilemmas according to these ratings. You will see some people who were rated as: <strong>morally good</strong>.
@@ -338,7 +338,7 @@ const politicalResponses = [
 
 // attention check
 const attention_scale = [
-  "1 = No, I didnt pay close attention. You should not use my data",
+  "1 = No, I didn't pay close attention. You should not use my data",
   "2",
   "3",
   "4",
@@ -460,14 +460,14 @@ const scenarioStimuli = [
       "ask gym for a free day pass to get inside of gym",
       "ghost her friend and let the friend know later",
       "sneak in and play anyways",
-      "call friend/famly to ask what to do"],
+      "call friend/family to ask what to do"],
     actions_m: [
       "renew membership to proceed",
       "borrow someone's cell phone",
       "ask gym for a free day pass to get inside of gym",
       "ghost his friend and let the friend know later",
       "sneak in and play anyways",
-      "call friend/famly to ask what to do"],
+      "call friend/family to ask what to do"],
     outcome_f: "Despite doing this, Liz cannot get into the gym, and she misses the racquetball game with her friends. Without Liz, her friends do not have enough players and must cancel the game.",
     outcome_m: "Despite doing this, Leo cannot get into the gym, and he misses the racquetball game with his friends. Without Leo, his friends do not have enough players and must cancel the game.",
     causal_f: "Liz caused the racquetball game to be cancelled.",
@@ -893,8 +893,8 @@ const scenarioStimuli = [
     outcome_m: "After the owner returns, she fires him.",
     causal_f: "Jess caused herself to be fired.",
     causal_m: "Jeff caused himself to be fired.",
-    causalcertain_f: "she was going get fired.",
-    causalcertain_m: "he was going get fired.",
+    causalcertain_f: "she was going to get fired.",
+    causalcertain_m: "he was going to get fired.",
     counter_m:"he wouldn't have gotten fired.",
     counter_f: "she wouldn't have gotten fired.",
     blame_f:"Jess should be blamed for getting fired.",
