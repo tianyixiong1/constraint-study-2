@@ -228,13 +228,13 @@ const instruction = {
     <div id="inst-container">
       <h2 style="text-align:center; margin-bottom:50px;" class="inst-p active">Welcome to our study!</h2>
       <p class="inst-p hidden">In this survey, you will read 8 short scenarios, each describing a dilemma that someone experienced.</p>
-      <p class="inst-p hidden">For each scenario, you’ll be shown a brief description of the person involved, followed by about 6 possible actions they could take. Your task is to choose the 2 actions you think the person is <strong>MOST likely</strong> to do, and the 2 actions they are <strong>LEAST likely</strong> to do.</p>
+      <p class="inst-p hidden">For each scenario, you will be shown a brief description of the person involved, followed by about 6 possible actions they could take. Your task is to choose the 2 actions you think the person is <strong>MOST likely</strong> to do, and the 2 actions they are <strong>LEAST likely</strong> to do.</p>
       <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer three questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), and how normal you think the action is.</p>
       <p class="inst-p hidden">The descriptions of the people you will learn about are based on the ratings from a group of prior participants.</p>
       <p class="inst-p hidden">
         We selected people and their dilemmas according to these ratings. You will see some people who were rated as: <strong>morally good</strong>.
         <br><br>
-        And you will also see some of people who were rated as: <strong>morally bad</strong>.
+        And you will also see some people who were rated as: <strong>morally bad</strong>.
       </p>
       <p class="inst-p hidden">
         That means that you will see similar information for each person, but each person is different.
@@ -520,14 +520,14 @@ const scenarioStimuli = [
     female_name: "Brooke",
     male_name: "Brad",
     actions_f: [
-      "tell everyone the situaiton and huddle up for warmth",
+      "tell everyone the situation and huddle up for warmth",
       "ration their food and water",
       "wait in place for rescue",
       "take others' supplies",
       "kill her friends and eat them",
       "ask friends what to do"],
     actions_m: [
-      "tell everyone the situaiton and huddle up for warmth",
+      "tell everyone the situation and huddle up for warmth",
       "ration their food and water",
       "wait in place for rescue",
       "take others' supplies",
@@ -693,7 +693,7 @@ const scenarioStimuli = [
       "call 911",
       "try to open or break the car window so the dog get some air",
       "look for the owner of the vehicle",
-      "lignore the dog and the situation",
+      "ignore the dog and the situation",
       "steal the car and the dog",
       "call a friend and ask what to do"],
     outcome_f: "The dog dies inside the car before anyone else arrives to help.",
@@ -852,7 +852,7 @@ const scenarioStimuli = [
       "ask Todd what to do"],
     actions_m: [
       "prioritize making Todd comfortable",
-      "gstay near and try to find phone coverage",
+      "stay near and try to find phone coverage",
       "look for water nearby",
       "cut his arm off to get him out",
       "kill Todd to put him out of his misery",
@@ -880,14 +880,14 @@ const scenarioStimuli = [
       "call another employee to take her place",
       "leave the store closed and go for her court appointment",
       "go to the court late",
-      "leave store open unattendede",
+      "leave store open unattended",
       "ask friend what to do"],
     actions_m: [
       "continue working and calling boss until the boss arrives",
       "call another employee to take his place",
       "leave the store closed and go for his court appointment",
       "go to the court late",
-      "leave store open unattendede",
+      "leave store open unattended",
       "ask friend what to do"],
     outcome_f: "After the owner returns, she fires her.",
     outcome_m: "After the owner returns, she fires him.",
@@ -954,7 +954,7 @@ const moralStatements = {
       <div>
         <p style="font-weight: bold;">
           Please read the introduction about ${name} and the scenario below.
-          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer following questions.
+          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer the following questions.
         </p>
 
         <p>
@@ -982,7 +982,7 @@ const moralStatements = {
       <div>
         <p style="font-weight: bold;">
           Please read the introduction about ${name} and the scenario below.
-          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer following questions.
+          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer the following questions.
         </p>
 
         <p>
