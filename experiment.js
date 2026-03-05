@@ -179,53 +179,111 @@ const consentForm = {
   }
 };
 
-// Instruction updated Dec 29
+// Instruction updated mar 5
 const instruction = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
-    <div style="max-width:800px; margin:auto; text-align:left;">
-      <h2 style="text-align:center">Welcome to our study!</h2>
+    <style>
+      #inst-container {
+        max-width: 800px; 
+        margin: auto; 
+        text-align: left;
+        padding-top: 45vh;
+        padding-bottom: 45vh;
+      }
+      .inst-p {
+        transition: all 0.5s ease;
+        color: #b0b0b0;
+        opacity: 0.4;
+        margin-bottom: 30px;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      .inst-p.active {
+        color: #000000;
+        opacity: 1;
+      }
+      .inst-p.hidden {
+        display: none;
+      }
+      #custom-next-btn {
+        position: fixed;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 12px 30px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      #custom-next-btn:hover {
+        background-color: #f0f0f0;
+      }
+    </style>
 
-      <p>
-        In this survey, we are interested in learning about the kinds of actions that you think someone else could do.
+    <div id="inst-container">
+      <h2 style="text-align:center; margin-bottom:50px;" class="inst-p active">Welcome to our study!</h2>
+      <p class="inst-p hidden">In this survey, you will read 8 short scenarios, each describing a dilemma that someone experienced.</p>
+      <p class="inst-p hidden">For each scenario, you’ll be shown a brief description of the person involved, followed by about 6 possible actions they could take. Your task is to choose the 2 actions you think the person is <strong>MOST likely</strong> to do, and the 2 actions they are <strong>LEAST likely</strong> to do.</p>
+      <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer three questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), and how normal you think the action is.</p>
+      <p class="inst-p hidden">The descriptions of the people you will learn about are based on the ratings from a group of prior participants.</p>
+      <p class="inst-p hidden">
+        We selected people and their dilemmas according to these ratings. You will see some people who were rated as: <strong>morally good</strong>.
+        <br><br>
+        And you will also see some of people who were rated as: <strong>morally bad</strong>.
       </p>
-
-      <p>
-        You will read 8 short scenarios, each describing a social dilemma that someone experienced.
+      <p class="inst-p hidden">
+        That means that you will see similar information for each person, but each person is different.
+        <br><br>
+        <strong>So please pay close attention to the details of the person in the scenario.</strong>
       </p>
-
-      <p>
-        For each scenario, you’ll be shown a brief moral description of the person involved, followed by about 6 possible actions they could take. Your task is to choose the 2 actions you think the person is <strong>MOST likely</strong> to do, and the 2 actions they are <strong>LEAST likely</strong> to do.
-      </p>
-
-      <p>
-        This judgment should be based on what you read about the person. After selecting each action, you will answer three questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), and how normal you think the action is.
-      </p>
-
-      <p>
-        The descriptions of the people you will learn about are based on a few traits that a group of prior participants rated as most important for making judgments about others.
-      </p>
-
-      <p>
-        We selected people and their social dilemmas according to these ratings. You will see a subset of people who were all rated as high in the following traits:
-        <strong>courageous, principled, dedicated, reliable, and honest</strong>.
-      </p>
-
-      <p>
-        And you will also see a subset of people who were rated high in these traits:
-        <strong>cowardly, unprincipled, undedicated, irresponsible, and dishonest</strong>.
-      </p>
-
-      <p>
-        So that means that <em>you will see several different people</em> that have the same trait descriptions, but did different things, so the scenarios that are described will differ.
-      </p>
-
-      <p>
-        <strong>You should pay close attention to both the details of the scenarios and the trait information that you learn about the person.</strong>
-      </p>
+      <button id="custom-next-btn" type="button">Next</button>
     </div>
   `,
-  choices: ['Continue']
+  choices: ['Continue'],
+  on_load: function() {
+    const jspsychBtnGroup = document.querySelector('#jspsych-html-button-response-btngroup');
+    if(jspsychBtnGroup) {
+      jspsychBtnGroup.style.display = 'none';
+      jspsychBtnGroup.style.position = 'fixed';
+      jspsychBtnGroup.style.bottom = '50px';
+      jspsychBtnGroup.style.left = '50%';
+      jspsychBtnGroup.style.transform = 'translateX(-50%)';
+      jspsychBtnGroup.style.zIndex = '999';
+    }
+
+    const paras = document.querySelectorAll('.inst-p');
+    const customBtn = document.getElementById('custom-next-btn');
+    let currentIndex = 0;
+
+    setTimeout(() => {
+      paras[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+
+    customBtn.addEventListener('click', function() {
+      paras[currentIndex].classList.remove('active');
+      currentIndex++;
+
+      if (currentIndex < paras.length) {
+        paras[currentIndex].classList.remove('hidden');
+        setTimeout(() => {
+          paras[currentIndex].classList.add('active');
+          paras[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 10);
+      }
+
+      if (currentIndex === paras.length - 1) {
+        customBtn.style.display = 'none';
+        if(jspsychBtnGroup) {
+          jspsychBtnGroup.style.display = 'block';
+        }
+      }
+    });
+  }
 };
 
 // Debrief form updated Oct 3
@@ -883,11 +941,11 @@ const moralStatements = {
       <div>
         <p style="font-weight: bold;">
           Please read the introduction about ${name} and the scenario below.
-          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer following questions.
+          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer the following questions.
         </p>
 
         <p>
-          People around ${name} think he is a really good person because he is courageous, principled, dedicated, reliable, and honest.
+          Prior participants rated ${name} as: morally good.
         </p>
       </div>
     `,
@@ -900,7 +958,7 @@ const moralStatements = {
         </p>
 
         <p>
-          People around ${name} think he is a really bad person because he is cowardly, unprincipled, undedicated, irresponsible, and dishonest.
+          Prior participants rated ${name} as: morally bad.
         </p>
       </div>
     `
@@ -911,11 +969,11 @@ const moralStatements = {
       <div>
         <p style="font-weight: bold;">
           Please read the introduction about ${name} and the scenario below.
-          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer following questions.
+          Then, choose the action that you believe ${name} is ${likelihoodPhrase} to do and answer the following questions.
         </p>
 
         <p>
-          People around ${name} think she is a really good person because she is courageous, principled, dedicated, reliable, and honest.
+          Prior participants rated ${name} as: morally good.
         </p>
       </div>
     `,
@@ -928,7 +986,7 @@ const moralStatements = {
         </p>
 
         <p>
-          People around ${name} think she is a really bad person because she is cowardly, unprincipled, undedicated, irresponsible, and dishonest.
+          Prior participants rated ${name} as: morally bad.
         </p>
       </div>
     `
@@ -977,8 +1035,8 @@ chosenConditions.forEach(condition => {
     leftLabel = "Not at all normal";
     rightLabel = "Very normal";
   } else if (type === "autonomy") {
-    leftLabel = "0 = Not at all";
-    rightLabel = "100 = Very much so";
+    leftLabel = "Not at all";
+    rightLabel = "Very much so";
   }
 
   return `
@@ -1014,145 +1072,156 @@ function choiceTrial({ condition, phase, pageLabel }) {
   const agentName = gender === "male" ? s.male_name : s.female_name;
   const scenarioText = gender === "male" ? s.male_agent : s.female_agent;
   const actions = condition.actions;
-  const possessive = gender === "male" ? "his" : "her"; //updated at Feb 16
+  const possessive = gender === "male" ? "his" : "her"; 
 
   const likelihoodPhrase = phase.startsWith("most")
   ? "most likely"
   : "least likely";
 
   return {
-  type: jsPsychSurveyHtmlForm,
-  preamble: `
-    <div style="max-width:800px;margin:0 auto;text-align:left;">
-      <p>${moralStatements[gender][moral](agentName, likelihoodPhrase)}</p>
-      <p>${scenarioText}</p>
+    type: jsPsychSurveyHtmlForm,
+    preamble: `
+      <div style="max-width:800px;margin:0 auto;text-align:left;">
+        <p>${moralStatements[gender][moral](agentName, likelihoodPhrase)}</p>
+        <p>${scenarioText}</p>
 
-      <p style="font-weight:bold; margin-top: 40px;">
-        ${pageLabel}
-      </p>
-    </div>
-  `,
-  html: `
-    <div style="max-width:650px;margin:40px auto 0 auto;text-align:left;">
+        <p style="font-weight:bold; margin-top: 40px;">
+          ${pageLabel}
+        </p>
+      </div>
+    `,
+    html: `
+      <div style="max-width:650px;margin:40px auto 0 auto;text-align:left;">
 
-      <p style="margin-bottom:30px;">
-        <strong>Please choose one action:</strong>
-      </p>
+        <p style="margin-bottom:30px;">
+          <strong>Please choose one action:</strong>
+        </p>
 
-      ${actions.map((a, i) => `
-        <div style="margin:12px 0;">
-          <label>
-            <input type="radio" name="choice" value="${i}" required>
-            ${a}
-          </label>
+        ${actions.map((a, i) => `
+          <div style="margin:12px 0;">
+            <label>
+              <input type="radio" name="choice" value="${i}" required>
+              ${a}
+            </label>
+          </div>
+        `).join("")}
+
+        <hr style="margin:50px 0;">
+
+       <div style="margin: 70px auto; max-width: 700px; text-align: center;">
+          <p style="margin-bottom:16px;">
+            How probable is it that ${agentName} will do that thing?
+          </p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+            <div style="flex-grow: 1;">
+              ${makeTopScale("prob")}
+              <input type="range" name="prob" min="0" max="100" step="1" value="50" style="width:100%; margin-top:12px;">
+            </div>
+            <div id="val_prob" style="flex-shrink: 0; width: 50px; height: 32px; line-height: 32px; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; color: transparent;">
+              50
+            </div>
+          </div>
         </div>
-      `).join("")}
 
-      <hr style="margin:50px 0;">
+        <div style="margin: 70px auto; max-width: 700px; text-align: center;">
+          <p style="margin-bottom:16px;">
+            How morally acceptable would it be for ${agentName} to do that thing?
+          </p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+            <div style="flex-grow: 1;">
+              ${makeTopScale("moral")}
+              <input type="range" name="moral" min="0" max="100" step="1" value="50" style="width:100%; margin-top:12px;">
+            </div>
+            <div id="val_moral" style="flex-shrink: 0; width: 50px; height: 32px; line-height: 32px; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; color: transparent;">
+              50
+            </div>
+          </div>
+        </div>
 
-      <!-- Probable -->
-      <div style="
-        margin: 70px auto;
-        max-width: 650px;
-        text-align: center;
-      ">
-        <p style="margin-bottom:16px;">
-          How probable is it that ${agentName} will do that thing?
-        </p>
-        ${makeTopScale("prob")}
-        <input
-          type="range"
-          name="prob"
-          min="0"
-          max="100"
-          step="1"
-          value="50"
-          style="width:100%; margin-top:12px;">
+        <div style="margin: 70px auto; max-width: 700px; text-align: center;">
+          <p style="margin-bottom:16px;">
+            How normal would it be if ${agentName} did that thing?
+          </p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+            <div style="flex-grow: 1;">
+              ${makeTopScale("norm")}
+              <input type="range" name="norm" min="0" max="100" step="1" value="50" style="width:100%; margin-top:12px;">
+            </div>
+            <div id="val_norm" style="flex-shrink: 0; width: 50px; height: 32px; line-height: 32px; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; color: transparent;">
+              50
+            </div>
+          </div>
+        </div>
+
+        <div style="margin: 70px auto; max-width: 700px; text-align: center;">
+          <p style="margin-bottom:16px;">
+            To what extent does ${agentName} exercise ${possessive} own free will in choosing to perform this action?
+          </p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+            <div style="flex-grow: 1;">
+              ${makeTopScale("autonomy")}
+              <input type="range" name="autonomy" min="0" max="100" step="1" value="50" style="width:100%; margin-top:12px;">
+            </div>
+            <div id="val_autonomy" style="flex-shrink: 0; width: 50px; height: 32px; line-height: 32px; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; color: transparent;">
+              50
+            </div>
+          </div>
+        </div>
+
       </div>
+    `,
+    on_load: function() {
+      const sliders = ['prob', 'moral', 'norm', 'autonomy'];
+      const status = { prob: false, moral: false, norm: false, autonomy: false };
+      
+      const nextBtn = document.querySelector('#jspsych-survey-html-form-next') || document.querySelector('.jspsych-btn');
+      if (nextBtn) {
+        nextBtn.disabled = true;
+      }
 
-      <!-- Moral -->
-      <div style="
-        margin: 70px auto;
-        max-width: 650px;
-        text-align: center;
-      ">
-        <p style="margin-bottom:16px;">
-          How morally acceptable would it be for ${agentName} to do that thing?
-        </p>
-        ${makeTopScale("moral")}
-        <input
-          type="range"
-          name="moral"
-          min="0"
-          max="100"
-          step="1"
-          value="50"
-          style="width:100%; margin-top:12px;">
-      </div>
+      sliders.forEach(name => {
+        const slider = document.querySelector(`input[name="${name}"]`);
+        const box = document.getElementById(`val_${name}`);
+        
+        if (slider && box) {
+          slider.addEventListener('input', function() {
+            box.innerText = this.value;
+            box.style.color = '#000000';
+            box.style.background = '#e6f7ff';
+            box.style.borderColor = '#1890ff';
+            
+            status[name] = true;
 
-      <!-- Normal -->
-      <div style="
-        margin: 70px auto;
-        max-width: 650px;
-        text-align: center;
-      ">
-        <p style="margin-bottom:16px;">
-          How normal would it be if ${agentName} did that thing?
-        </p>
-        ${makeTopScale("norm")}
-        <input
-          type="range"
-          name="norm"
-          min="0"
-          max="100"
-          step="1"
-          value="50"
-          style="width:100%; margin-top:12px;">
-      </div>
+            const allAnswered = Object.values(status).every(v => v === true);
+            if (allAnswered && nextBtn) {
+              nextBtn.disabled = false;
+            }
+          });
+        }
+      });
+    },
+    button_label: "Continue",
+    data: {
+      scenario_id: s.id,
+      agent_gender: gender,
+      moral_character: moral,
+      phase: phase,
+      actions: actions
+    },
+    on_finish: function (data) {
+      const idx = Number(data.response.choice);
 
-      <!-- Autonomy -->
-      <div style="
-        margin: 70px auto;
-        max-width: 650px;
-        text-align: center;
-      ">
-        <p style="margin-bottom:16px;">
-          To what extent does ${agentName} exercise ${possessive} own free will in choosing to perform this action?
-        </p>
-        ${makeTopScale("autonomy")}
-        <input
-          type="range"
-          name="autonomy"
-          min="0"
-          max="100"
-          step="1"
-          value="50"
-          style="width:100%; margin-top:12px;">
-      </div>
+      data.action_index = idx;
+      data.action_text = actions[idx];
 
-    </div>
-  `,
-  button_label: "Continue",
-  data: {
-    scenario_id: s.id,
-    agent_gender: gender,
-    moral_character: moral,
-    phase: phase,
-    actions: actions
-  },
-  on_finish: function (data) {
-    const idx = Number(data.response.choice);
-
-    data.action_index = idx;
-    data.action_text = actions[idx];
-
-    data.prob = Number(data.response.prob);
-    data.moral_rating = Number(data.response.moral);
-    data.norm = Number(data.response.norm);
-    data.autonomy = Number(data.response.autonomy);
-  }
+      data.prob = Number(data.response.prob);
+      data.moral_rating = Number(data.response.moral);
+      data.norm = Number(data.response.norm);
+      data.autonomy = Number(data.response.autonomy);
+    }
+  };
 };
-}
+
 
 const study2Timeline = [];
 
@@ -1317,29 +1386,11 @@ const demographicsQuestions = {
 };
 
 
-// Political ideology + Bot Check -- updated Oct 10
+// Political ideology + Bot Check -- updated mar 5 (only kept the overall political ideology item)
 // No matter they input "sunflower" or "penguin", they would be a LLM, as human cannot see the text here
 const politicsQuestions = {
   type: jsPsychSurveyMultiChoice,
   questions: [
-    {
-      name: 'political-ideology-economic',
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-          Which response best captures your political beliefs surrounding <strong>economic</strong> issues?
-        </p>`,
-      options: politicalResponses,
-      horizontal: true
-    },
-    {
-      name: 'political-ideology-social',
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-          Which response best captures your political beliefs surrounding <strong>social</strong> issues?
-        </p>`,
-      options: politicalResponses,
-      horizontal: true
-    },
     {
       name: 'political-ideology-overall',
       prompt: `
@@ -1423,46 +1474,62 @@ const politicsQuestions = {
     }
 
     // save political responses
-    data.political_ideology_economic = politicalData['political-ideology-economic'];
-    data.political_ideology_social = politicalData['political-ideology-social'];
     data.political_ideology_overall = politicalData['political-ideology-overall'];
   }
 };
 
 
 
-// DataPipe conclude data collection
+// DataPipe conclude data collection--updated Feb 16 for data format preview
 const save_data = {
-   type: jsPsychPipe,
-   action: "save",
-   experiment_id: "LIYfnXa5y6zU", //updated as of Sep 18
-   filename: filename,
-   data_string: () => jsPsych.data.get().csv(),
-   on_finish: function (data) {
-     function countdown(start, end) {
-       const timer = setInterval(function() {
-         if (start <= end) {
-           clearInterval(timer);
-         } else {
-           start--;
-           document.getElementById("countdown").innerHTML = start;
+  type: jsPsychPipe,
+  action: "save",
+  experiment_id: "LIYfnXa5y6zU",
+  filename: filename,
+  data_string: () => jsPsych.data.get().csv(),
+
+  on_finish: function () {
+
+
+    const csvBlob = new Blob([jsPsych.data.get().csv()], { type: 'text/csv' });
+    const url     = URL.createObjectURL(csvBlob);
+    const link    = document.createElement('a');
+    link.href = url;
+    link.download = filename; 
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click(); 
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);  
+
+   
+    function countdown(sec) {
+      const timer = setInterval(() => {
+        if (sec <= 0) clearInterval(timer);
+        else {
+          sec--;
+          document.getElementById('countdown').textContent = sec;
         }
       }, 1000);
-     }
-    
-     countdown(5, 0);
+    }
 
-     jsPsych.endExperiment(
-      `<p class="jspsych-center">
-         Thanks for participating! You will be redirected in <span id="countdown">5</span> second </p>
-         <p> DO NOT CLOSE OUT OF THIS PAGE BEFORE YOU ARE REDIRECTED.
-       </p>`
-     );
-     setTimeout(function () {
-       window.location.href = "https://app.prolific.com/submissions/complete?cc=C15ADLI3"; //this is updated as of sep 18
-     }, 5000)
-   }
- };
+    countdown(5);
+
+    jsPsych.endExperiment(`
+      <p class="jspsych-center">
+        Thanks for participating! You will be redirected in
+        <span id="countdown">5</span> seconds
+      </p>
+      <p>DO NOT CLOSE THIS PAGE BEFORE YOU ARE REDIRECTED.</p>
+    `);
+
+    setTimeout(() => {
+      window.location.href =
+        "https://app.prolific.com/submissions/complete?cc=C15ADLI3";
+    }, 5000);
+  }
+};
+
 //Add helper function for data format updated Oct 6
 function expandResponse(data) {
   const responses = data.response;
