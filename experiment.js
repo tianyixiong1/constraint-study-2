@@ -229,7 +229,8 @@ const instruction = {
       <h2 style="text-align:center; margin-bottom:50px;" class="inst-p active">Welcome to our study!</h2>
       <p class="inst-p hidden">In this survey, you will read 8 short scenarios, each describing a dilemma that someone experienced.</p>
       <p class="inst-p hidden">For each scenario, you will be shown a brief description of the person involved, followed by about 6 possible actions they could take. Your task is to choose the 2 actions you think the person is <strong>MOST likely</strong> to do, and the 2 actions they are <strong>LEAST likely</strong> to do.</p>
-      <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer four questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), how normal you think the action is, and how much they are exercising free will to do that.</p>
+      <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer four questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), how normal you think it is for that person to do so, and how much they are exercising free will to do that.</p>
+      <p class="inst-p hidden">Please answer based on your own impression of this person performing the action, rather than the action itself.</p>
       <p class="inst-p hidden">The descriptions of the people you will learn about are based on the ratings from a group of prior participants.</p>
       <p class="inst-p hidden">
         We selected people and their dilemmas according to these ratings. You will see some people who were rated as: <strong>morally good</strong>.
