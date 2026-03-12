@@ -227,7 +227,7 @@ const instruction = {
 
     <div id="inst-container">
       <h2 style="text-align:center; margin-bottom:50px;" class="inst-p active">Welcome to our study!</h2>
-      <p class="inst-p hidden">In this survey, you will read 8 short scenarios, each describing a dilemma that someone experienced.</p>
+      <p class="inst-p hidden">In this survey, you will read 4 short scenarios, each describing a dilemma that someone experienced.</p>
       <p class="inst-p hidden">For each scenario, you will be shown a brief description of the person involved, followed by about 6 possible actions they could take. Your task is to choose the 2 actions you think the person is <strong>MOST likely</strong> to do, and the 2 actions they are <strong>LEAST likely</strong> to do.</p>
       <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer four questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), how normal you think it is for that person to do so, and how much they are exercising free will to do that.</p>
       <p class="inst-p hidden">Please answer based on your own impression of this person performing the action, rather than the action itself.</p>
@@ -742,8 +742,8 @@ const scenarioStimuli = [
 
     {
     id: 13,
-    female_agent: "Diana is the ring bearer at her sister’s wedding. 10 minutes into the ceremony, she reaches into her pocket but the ring isn’t there. She realizes she left it on the seat next to her in the taxi.",
-    male_agent: "Daniel is the ring bearer at his sister’s wedding. 10 minutes into the ceremony, he reaches into his pocket but the ring isn’t there. He realizes he left it on the seat next to him in the taxi.",
+    female_agent: "Diana is the ring bearer at her sister’s wedding. She works as a marketing manager and is very close to her sister. 10 minutes into the ceremony, she reaches into her pocket but the ring isn’t there. She realizes she left it on the seat next to her in the taxi.",
+    male_agent: "Daniel is the ring bearer at his sister’s wedding. He works as a marketing manager and is very close to his sister. 10 minutes into the ceremony, he reaches into his pocket but the ring isn’t there. He realizes he left it on the seat next to him in the taxi.",
     context_2nd: "You are the ring bearer at your sister’s wedding. 10 minutes into the ceremony, you reach into your pocket but the ring isn’t there. You realize you left it on the seat next to you in the taxi.",
     female_name: "Diana",
     male_name: "Daniel",
@@ -996,13 +996,9 @@ const moralStatements = {
 
 const chosenScenarios = jsPsych.randomization.sampleWithoutReplacement(
   scenarioStimuli,
-  8
+  4
 );
 const conditionLabels = jsPsych.randomization.shuffle([
-  { gender: "male", moral: "good" },
-  { gender: "male", moral: "bad" },
-  { gender: "female", moral: "good" },
-  { gender: "female", moral: "bad" },
   { gender: "male", moral: "good" },
   { gender: "male", moral: "bad" },
   { gender: "female", moral: "good" },
