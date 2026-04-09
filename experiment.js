@@ -507,17 +507,7 @@ function makeTopScale(type) {
   `;
 }
 
-// ─── Choice trial ─────────────────────────────────────────────────────────────
-//
-//  NAME OVERLAY TUNING:
-//  Open your images in a browser, right-click → Inspect, and adjust the two
-//  CSS values below until the name sits in the badge area:
-//
-//    .profile-name-overlay  →  left: 30%   (try 28–34%)
-//                              top:  8%    (try 6–12%)
-//
-//  Those values are set in the <style> block at the top of this file.
-//
+// Choice trial
 function choiceTrial({ condition, phase, pageLabel }) {
   const s          = condition.scenario;
   const gender     = condition.gender;
@@ -537,7 +527,7 @@ function choiceTrial({ condition, phase, pageLabel }) {
         ${buildProfileCard(imageFile, agentName)}
 
         <!-- Scenario -->
-        <p style="margin-top:24px; font-size:15px; line-height:1.7;">${scenarioText}</p>
+        <p style="margin-top:24px; font-size:16px; line-height:1.7;">${scenarioText}</p>
 
         <!-- Task instruction -->
         <p style="font-weight:bold; margin-top:32px;">${pageLabel}</p>
@@ -675,7 +665,7 @@ function buildProfileCard(imageFile, agentName) {
 
         <!-- Rating header -->
         <div style="background:#f7f7f7; margin:-0px -18px 12px -18px; padding:7px 18px; border-top:0.5px solid #ddd; border-bottom:0.5px solid #ddd;">
-          <span style="font-size:11px; color:#111; font-family:monospace;">Prior participant ratings</span>
+          <span style="font-size:14px; color:#111;">Prior participant ratings</span>
         </div>
 
         <!-- Scale labels -->
