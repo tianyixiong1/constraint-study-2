@@ -237,8 +237,9 @@ const instruction = {
       <p class="inst-p hidden">Please answer based on your own impression of this person performing the action, rather than the action itself.</p>
       <p class="inst-p hidden">The descriptions of the people you will learn about are based on the ratings from a group of prior participants. We collected these scenarios from real events, and we are curious about whether people have correct intuitions about what the person actually did.</p>
       <p class="inst-p hidden">
-        Some of these people are <strong>extreme cases</strong> — they took unusually extreme actions, either very good or very bad.
-        Others are not extreme at all. Before each scenario, we will show you their profile and ask:
+        Some of these people are <strong>extreme cases</strong> — they took unusually extreme actions, either very good or very bad. 
+Others are average people. We randomly present 4 scenarios from our pool, so you may or may not read about both extreme and average people. 
+Before each scenario, we will show you their profile and ask:
         <br><br>
         <em>"Is this person an extreme case?"</em>
         <br><br>
