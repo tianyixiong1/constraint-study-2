@@ -63,9 +63,7 @@ const jsPsych = initJsPsych({
   auto_preload: true,
   show_progress_bar: true,
   default_iti: 0,
-  on_finish: function (data) {
-    jsPsych.data.displayData('csv');
-  }
+  on_finish: function (data) {}
 });
 
 const participantId = jsPsych.data.getURLVariable('PROLIFIC_PID');
