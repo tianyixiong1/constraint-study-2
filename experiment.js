@@ -1014,8 +1014,8 @@ function buildSingleRevealTrial(condition, index) {
           <div style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
             <div style="flex-grow:1;">
               <div style="position:relative;width:100%;margin:0 0 12px 0;height:36px;">
-                <span style="position:absolute;left:0;top:0.4em;font-size:14px;margin-left:-8px;">Not at all surprised</span>
-                <span style="position:absolute;right:0;top:0.4em;font-size:14px;margin-right:-8px;">Extremely surprised</span>
+                <span style="position:absolute;left:0;top:0.4em;font-size:14px;margin-left:-8px;">Not at all</span>
+                <span style="position:absolute;right:0;top:0.4em;font-size:14px;margin-right:-8px;">Very much so</span>
                 ${Array.from({ length: 11 }, (_, i) => i * 10).map(v =>
                   `<span style="position:absolute;left:${v}%;top:30px;transform:translateX(-50%);font-size:11px;">${v}</span>`
                 ).join("")}
