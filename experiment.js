@@ -892,13 +892,6 @@ const save_data = {
   filename: filename,
   data_string: () => jsPsych.data.get().csv(),
   on_finish: function() {
-    const csvBlob = new Blob([jsPsych.data.get().csv()], { type: 'text/csv' });
-    const url  = URL.createObjectURL(csvBlob);
-    const link = document.createElement('a');
-    link.href = url; link.download = filename; link.style.display = 'none';
-    document.body.appendChild(link); link.click();
-    document.body.removeChild(link); URL.revokeObjectURL(url);
-
     let sec = 5;
     const timer = setInterval(() => {
       if (sec <= 0) clearInterval(timer);
