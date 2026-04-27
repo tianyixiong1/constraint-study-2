@@ -243,14 +243,12 @@ Before each set of choices, you will see a profile and scenario for that person.
         <br><br>
         <em>"Is this person an extreme case?"</em>
         <br><br>
-        You don't need to answer whether this is an extreme case. but we would like you to trust your instincts about this person as you choose the actions on the next page.<strong>At the end of the study, we will reveal the answer for each person.</strong>
+        You don't need to answer whether this is an extreme case. but we would like you to trust your instincts about this person as you choose the actions on the next page. <strong>At the end of the study, we will reveal the answer for each person.</strong>
       </p>
       <p class="inst-p hidden">
         Each person is different, so please pay close attention to the profile and scenario before making your choices.
         <br><br>
         <strong>There are 4 people in total.</strong>
-        <br><br>
-        <em>Note: The profile ratings (Principled, Honest, Caring) are intentionally hidden during the task — they will be revealed at the very end of the study.</em>
       </p>
       <button id="custom-next-btn" type="button">Next</button>
     </div>
