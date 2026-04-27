@@ -206,7 +206,7 @@ const consentForm = {
   }
 };
 
-// Instructions (unchanged)
+// Instructions--updated april 27
 const instruction = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -237,13 +237,13 @@ const instruction = {
       <p class="inst-p hidden">Please answer based on your own impression of this person performing the action, rather than the action itself.</p>
       <p class="inst-p hidden">The descriptions of the people you will learn about are based on the ratings from a group of prior participants. We collected these scenarios from real events, and we are curious about whether people can correctly guess what the person actually did.</p>
       <p class="inst-p hidden">
-        Some of these people are <strong>extreme cases</strong> — they performed unusually extreme actions, either very good or very bad. 
+        Some of these people are <strong>extreme cases</strong> - they performed unusually extreme actions, either very good or very bad. 
 Others are more average - they perform actions that are more typical. We randomly present 4 scenarios from our pool, so you may or may not read about both extreme and average people. 
-Before each scenario, we will show you their profile and ask:
+Before each set of choices, you will see a profile and scenario for that person. And we will ask:
         <br><br>
         <em>"Is this person an extreme case?"</em>
         <br><br>
-        Trust your instincts. <strong>At the end of the study, we will reveal the answer for each person.</strong>
+        You don't need to answer whether this is an extreme case. but we would like you to trust your instincts about this person as you choose the actions on the next page.<strong>At the end of the study, we will reveal the answer for each person.</strong>
       </p>
       <p class="inst-p hidden">
         Each person is different, so please pay close attention to the profile and scenario before making your choices.
@@ -761,7 +761,7 @@ function profileIntroTrial(condition) {
 
       </div>
     `,
-    choices: ['Take a guess \u2192'],
+    choices: ['Continue \u2192'],
     button_html: '<button class="jspsych-btn" style="font-size:15px; padding:10px 28px; border-radius:8px; background:#111; color:#fff; border:none; cursor:pointer; letter-spacing:0.03em; margin-top:10px;">%choice%</button>',
   };
 }
