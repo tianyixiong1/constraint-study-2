@@ -739,8 +739,8 @@ function profileIntroTrial(condition) {
         <!-- Sidebar note -->
         <p style="font-size:14px; color:#111; margin:14px 0 28px;
                   border-left:2px solid #999; padding-left:12px; line-height:1.6;">
-          At the end of this study, you'll find out if your intuition was correct.<br>
-          For now — study the profile carefully and trust your instincts.
+          At the end of the study, you will find out whether your guess was correct.<br>
+          For now, please read the profile and scenario and make your best guess.
         </p>
 
         <!-- Unified profile card -->
