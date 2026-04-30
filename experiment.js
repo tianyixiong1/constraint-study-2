@@ -945,7 +945,7 @@ function generateRatings(type) {
   };
 }
 
-// Build the card UI for the Reveal page
+// Build the card UI for the Reveal page --updated at april 30: red for bad agent and blue for good agent
 function buildRevealCard(imageFile, agentName, ratings, revealType) {
   const barStyle = (pct) => {
     const color = revealType === 'bad'
