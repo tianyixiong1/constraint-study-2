@@ -946,29 +946,27 @@ function generateRatings(type) {
 }
 
 // Build the card UI for the Reveal page
-function buildRevealCard(imageFile, agentName, ratings) {
-  const barStyle = (pct) =>
-    `width:${pct}%; height:9px; background:linear-gradient(to right,#b5d4f4,#185fa5); border-radius:5px;`;
-
+function buildRevealCard(imageFile, agentName, ratings, revealType) {
+  const barStyle = (pct) => {
+    const color = revealType === 'bad'
+      ? 'background:linear-gradient(to right,#f4b5b5,#a51818);'
+      : 'background:linear-gradient(to right,#b5d4f4,#185fa5);';
+    return `width:${pct}%; height:9px; ${color} border-radius:5px;`;
+  };
   return `
     <div style="width:340px; background:#fff; border:0.5px solid #ddd; border-radius:12px; overflow:hidden; flex-shrink:0;">
-
       <div style="line-height:0;">
         <img src="${imageFile}" alt="${agentName}" style="width:100%; height:auto; display:block;">
       </div>
-
       <div style="padding:14px 16px;">
         <p style="font-size:17px; font-weight:600; color:#111; margin:0 0 12px;">${agentName}</p>
-
         <div style="background:#f7f7f7; margin:0 -16px 10px -16px; padding:6px 16px;
                     border-top:0.5px solid #ddd; border-bottom:0.5px solid #ddd;">
           <span style="font-size:11px; color:#111; font-family:monospace;">Prior participant ratings</span>
         </div>
-
         <div style="display:flex; justify-content:space-between; font-size:11px; color:#111; margin-bottom:12px;">
           <span>Not at all</span><span>Very</span>
         </div>
-
         <div style="display:flex; flex-direction:column; gap:12px;">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
@@ -1012,7 +1010,7 @@ function buildSingleRevealTrial(condition, index) {
   const shortReminder = sentences.slice(0, 2).join(' ').trim();
 
   const ratings = generateRatings(condition.revealType);
-  const cardHtml = buildRevealCard(condition.imageFile, agentName, ratings);
+  const cardHtml = buildRevealCard(condition.imageFile, agentName, ratings, condition.revealType);
 
   return {
     type: jsPsychSurveyHtmlForm,
