@@ -545,7 +545,7 @@ function choiceTrial({ condition, phase, pageLabel }) {
 
         <!-- Task instruction -->
         <p style="font-weight:bold; margin-top:32px;">${pageLabel}</p>
-        <p>Based on what you know about <strong>${agentName}</strong>, please choose the action that you believe is <strong>${likelihoodPhrase}</strong> and answer the questions below.</p>
+        <p>Based on what you know about <strong>${agentName}</strong>, please choose the <strong>${likelihoodPhrase}</strong> action and answer the questions below.</p>
       </div>
     `,
 
