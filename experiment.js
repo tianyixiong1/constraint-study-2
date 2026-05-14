@@ -233,17 +233,16 @@ const instruction = {
       <h2 style="text-align:center; margin-bottom:50px;" class="inst-p active">Welcome to our study!</h2>
       <p class="inst-p hidden">In this survey, you will read 4 short scenarios, each describing a dilemma that someone experienced.</p>
       <p class="inst-p hidden">For each scenario, you will be shown a brief description of the person involved, followed by 6 possible actions they could take. Your task is to choose the action you think the person is <strong>MOST likely</strong> to do, and the action they are <strong>LEAST likely</strong> to do.</p>
-      <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer four questions about the actions. You will rate how probable (likely it is that this action would happen), how morally acceptable (whether you think the action is morally good), how normal you think it is for that person to do so, and how much they are exercising free will to do that.</p>
+      <p class="inst-p hidden">This judgment should be based on what you read about the person. After selecting each action, you will answer questions about the actions. These questions will ask about how probable (likely it is that this action would happen), morally acceptable (whether you think the action is morally okay to do), normal (how normal it is for someone to do this), and how free someone is to do this.</p>
       <p class="inst-p hidden">Please answer based on your own impression of this person performing the action, rather than the action itself.</p>
       <p class="inst-p hidden">The descriptions of the people you will learn about are based on the ratings from a group of prior participants. We collected these scenarios from real events, and we are curious about whether people can correctly guess what the person actually did.</p>
       <p class="inst-p hidden">
         Some of these people are <strong>extreme cases</strong> - they performed unusually extreme actions, either very good or very bad. 
-Others are more average - they perform actions that are more typical. We randomly present 4 scenarios from our pool, so you may or may not read about both extreme and average people. 
-Before each set of choices, you will see a profile and a scenario for that person. And we will ask:
+        Others are more average - they performed actions that were more typical. We randomly present 4 scenarios from our pool, so you may or may not read about both extreme and average people. Before each set of choices, you will see a profile and a scenario for that person. And we will ask:
         <br><br>
         <em>"Is this person an extreme case?"</em>
         <br><br>
-        You don't need to answer whether this is an extreme case. but we would like you to trust your instincts about this person as you choose the actions on the next page. <strong>At the end of the study, we will reveal the answer for each person.</strong>
+        You don't need to answer whether this is an extreme case. but we would like you to think about the likelihood that someone one be and to trust your instincts about the people you learn about as you choose the actions. <strong>At the end of the study, we will reveal the answer for each person.</strong>
       </p>
       <p class="inst-p hidden">
         Each person is different, and the profile may provide limited information, so you can also base your guess on the scenario.
