@@ -999,7 +999,7 @@ function buildRevealCard(imageFile, agentName, ratings, revealType) {
     </div>
   `;
 }
-
+// Updated at May 16
 function buildSingleRevealTrial(condition, index) {
   const s = condition.scenario;
   const agentName = condition.gender === "male" ? s.male_name : s.female_name;
