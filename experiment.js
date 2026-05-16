@@ -1028,27 +1028,26 @@ function buildSingleRevealTrial(condition, index) {
         <div style="display:flex; justify-content:center; margin-bottom:40px;">
           ${cardHtml}
         </div>
-
-        <div style="margin:70px auto; max-width:700px; text-align:center;">
-          <p style="margin-bottom:16px;">How surprised are you to see these ratings for ${agentName}?</p>
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
-            <div style="flex-grow:1;">
-              <div style="position:relative;width:100%;margin:0 0 12px 0;height:36px;">
-                <span style="position:absolute;left:0;top:0.4em;font-size:14px;margin-left:-8px;">Not at all</span>
-                <span style="position:absolute;right:0;top:0.4em;font-size:14px;margin-right:-8px;">Very much so</span>
-                ${Array.from({ length: 11 }, (_, i) => i * 10).map(v =>
-                  `<span style="position:absolute;left:${v}%;top:30px;transform:translateX(-50%);font-size:11px;">${v}</span>`
-                ).join("")}
-              </div>
-              <input type="range" name="surprise" min="0" max="100" step="1" value="50" style="width:100%; margin-top:12px;">
-            </div>
-            <div id="val_surprise" style="flex-shrink:0; width:50px; height:32px; line-height:32px; border:1px solid #ccc; border-radius:4px; background:#f5f5f5; color:transparent; text-align:center;">50</div>
-          </div>
-        </div>
-
       </div>
     `,
-    html: `<div style="display:none;"></div>`,
+    html: `
+      <div style="margin:70px auto; max-width:700px; text-align:center;">
+        <p style="margin-bottom:16px;">How surprised are you to see these ratings for ${agentName}?</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
+          <div style="flex-grow:1;">
+            <div style="position:relative;width:100%;margin:0 0 12px 0;height:36px;">
+              <span style="position:absolute;left:0;top:0.4em;font-size:14px;margin-left:-8px;">Not at all</span>
+              <span style="position:absolute;right:0;top:0.4em;font-size:14px;margin-right:-8px;">Very much so</span>
+              ${Array.from({ length: 11 }, (_, i) => i * 10).map(v =>
+                `<span style="position:absolute;left:${v}%;top:30px;transform:translateX(-50%);font-size:11px;">${v}</span>`
+              ).join("")}
+            </div>
+            <input type="range" name="surprise" min="0" max="100" step="1" value="50" style="width:100%; margin-top:12px;">
+          </div>
+          <div id="val_surprise" style="flex-shrink:0; width:50px; height:32px; line-height:32px; border:1px solid #ccc; border-radius:4px; background:#f5f5f5; color:transparent; text-align:center;">50</div>
+        </div>
+      </div>
+    `,
     on_load: function() {
       const nextBtn = document.querySelector('#jspsych-survey-html-form-next') || document.querySelector('.jspsych-btn');
       if (nextBtn) nextBtn.disabled = true;
